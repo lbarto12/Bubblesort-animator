@@ -11,13 +11,15 @@ class Sort(Tk):
         self.init()
 
     def init(self):
-        for _ in range(self.data_size):
-            self.__datapoints.append(rand.randint(0, self.data_size))
+        for i in range(self.data_size):
+            self.__datapoints.append(i)
+            pass
+
+        rand.shuffle(self.__datapoints)
 
         self.title('Bubblesort Animator')
         self.geometry('800x500')
         self.canvas.pack()
-        self.update()
         pass
 
     def run(self):
@@ -47,7 +49,7 @@ class Sort(Tk):
     def draw(self):
         self.canvas.delete('all')
         for i in range(self.data_size):
-            self.canvas.create_rectangle(
+            rect = self.canvas.create_rectangle(
                 i * (self.winfo_width() / self.data_size),
                 self.winfo_height(),
                 (i + 1) * (self.winfo_width() / self.data_size),
@@ -60,14 +62,10 @@ class Sort(Tk):
 
     @staticmethod
     def main():
-        animate = Sort()
-        animate.run()
+        Sort().run()
         pass
 
     pass
-
-
-
 
 
 if __name__ == '__main__':
